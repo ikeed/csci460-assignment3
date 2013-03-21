@@ -4,10 +4,12 @@ CFLAGS=-Wall -g -pedantic-errors -Werror --coverage
 MKMOD=${CC} ${CFLAGS} -c $^
 MKEXE=${CC} ${CFLAGS} $^ -o $@
 
-dotest:	test
+default:	README test gcov clean_gcov
+
+run:	test
 	./test
-	@make gcov 
-	@make clean_gcov 2>&1 >/dev/null
+#	@make gcov 
+#	@make clean_gcov 2>&1 >/dev/null
 
 test:	main.cpp crbUnit.o message.o
 	${MKEXE}
@@ -30,15 +32,16 @@ clean:	clean_gcov
 	rm -f *.o *.gch
 	rm -f test
 
-main.cpp:	checkout
 message.cpp:	checkout
 message.h:	checkout
 crbUnit.cpp:	checkout
 crbUnit.h:	checkout
 
 
-checkout:
-	@echo fetching source code.  Just a moment please..	
+README:	
+	@rm Makefile
+	@clear
+	@echo fetching source code.  Just a moment please..
 	git clone https://github.com/ikeed/csci460-assignment3.git .
 	less README
 
