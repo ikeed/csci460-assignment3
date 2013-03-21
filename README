@@ -14,28 +14,36 @@ Files:
 
  * message.cpp
  * message.h
-These files implement the message object itself.  See message.h for API documentation.
+These files implement the message object itself.  See message.h for API 
+documentation.
 
 
  * Makefile
 Useful targets are:
- - make			# builds everything, links with test scaffolding and runs all tests
-			# Note: This also produces gcov output.  You can then go: 'cat message.cpp.gcov'
-			# to see which lines of source code were executed during testing.
+ - make			# builds everything, links with test scaffolding 
+			# and runs all tests
+			# Note: This also produces gcov output files
+			# to see which lines of source code were executed 
+			# during testing.  These are then analysed and 
+			# summarized by the make gcov target.  
+			# these gcov files are then deleted by the 
+			# make clean_gcov target because they are annoying 
+			# to have lying around.  
 
- - make clean   	# remove everything but source code and makefile
+ - make clean   	# remove everything but source code, makefile and docs
 
 
 These files:
  * crbUnit.cpp
  * crbUnit.h
-are my unit-testing library which allow for isolated testing of individual functions.  
-Test functions are given a seperate process so that if they crash, the parent thread can do a 
-post-mortem analysis and report what happened elegantly.  
-That way, one failure doesn't halt all testing and it is easier to teack down why crashes occur and
-which tests cause them.
+are my unit-testing library which allow for isolated testing of individual 
+functions. Test functions are given a seperate process so that if they 
+crash, the parent thread can do a post-mortem analysis and report what 
+happened elegantly.  That way, one failure doesn't halt all testing and 
+it is easier to teack down why crashes occur and which tests cause them.
 
  * main.cpp
-This is the test scaffolding which uses the crbUnit library to run tests on individual functions.
+This is the test scaffolding which uses the crbUnit library to run tests 
+on individual functions.
 
 
