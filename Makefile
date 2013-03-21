@@ -29,9 +29,6 @@ clean_gcov:
 clean:	clean_gcov
 	rm -f *.o *.gch
 	rm -f test
-clean:	clean_gcov
-	rm -f *.o *.gch
-	rm -f test
 
 main.cpp:	checkout
 message.cpp:	checkout
