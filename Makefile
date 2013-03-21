@@ -32,16 +32,3 @@ clean:	clean_gcov
 	rm -f *.o *.gch
 	rm -f test
 
-message.cpp:	checkout
-message.h:	checkout
-crbUnit.cpp:	checkout
-crbUnit.h:	checkout
-README:	checkout
-
-checkout:
-	@rm Makefile
-	@clear
-	@echo fetching source code.  Just a moment please..
-	git clone https://github.com/ikeed/csci460-assignment3.git .
-	less README
-
