@@ -4,7 +4,7 @@ CFLAGS=-Wall -g -pedantic-errors -Werror --coverage
 MKMOD=${CC} ${CFLAGS} -c $^
 MKEXE=${CC} ${CFLAGS} $^ -o $@
 
-default:	README test gcov clean_gcov
+default:	README run gcov clean_gcov
 
 run:	test
 	./test
