@@ -29,3 +29,19 @@ clean_gcov:
 clean:	clean_gcov
 	rm -f *.o *.gch
 	rm -f test
+clean:	clean_gcov
+	rm -f *.o *.gch
+	rm -f test
+
+main.cpp:	checkout
+message.cpp:	checkout
+message.h:	checkout
+crbUnit.cpp:	checkout
+crbUnit.h:	checkout
+
+
+checkout:
+	@echo fetching source code.  Just a moment please..	
+	git clone https://github.com/ikeed/csci460-assignment3.git .
+	less README
+

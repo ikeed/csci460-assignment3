@@ -1,7 +1,20 @@
-These files:
+Author: Craig Burnett
+Course: CSCI460
+Instructor: Huizihu Liu
+Assignment: 3
+
+
+This document outlines what each of the submitted files do.  But really,
+as soon as you type 'q' to stop viewing this document, the software will
+build itself and run all tests.
+
+
+Files:
+~~~~~
+
  * message.cpp
  * message.h
-implement the message object itself.  This is my source code submitted for grading.
+These files implement the message object itself.  See message.h for API documentation.
 
 
  * Makefile
