@@ -1,0 +1,24 @@
+These files:
+ * message.cpp
+ * message.h
+implement the message object itself.  This is my source code submitted for grading.
+
+
+ * Makefile
+Useful targets are:
+ - make			# builds everything, links with test scaffolding and runs all tests
+			# Note: This also produces gcov output.  You can then go: 'cat message.cpp.gcov'
+			# to see which lines of source code were executed during testing.
+
+ - make clean   	# remove everything but source code and makefile
+
+
+These files:
+ * crbUnit.cpp
+ * crbUnit.h
+are my unit-testing library which allow for isolated testing of individual functions.
+
+ * main.cpp
+This is the test scaffolding which uses the crbUnit library to run tests on individual functions.
+
+
