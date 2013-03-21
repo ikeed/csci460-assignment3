@@ -29,7 +29,11 @@ Useful targets are:
 These files:
  * crbUnit.cpp
  * crbUnit.h
-are my unit-testing library which allow for isolated testing of individual functions.
+are my unit-testing library which allow for isolated testing of individual functions.  
+Test functions are given a seperate process so that if they crash, the parent thread can do a 
+post-mortem analysis and report what happened elegantly.  
+That way, one failure doesn't halt all testing and it is easier to teack down why crashes occur and
+which tests cause them.
 
  * main.cpp
 This is the test scaffolding which uses the crbUnit library to run tests on individual functions.
