@@ -6,7 +6,7 @@ Assignment: 3
 
 This document outlines what each of the submitted files do.  But really,
 as soon as you type 'q' to stop viewing this document, the software will
-build itself and run all tests.
+build itself and run all tests.  The test executable is assignment3/test.
 
 
 Files:
