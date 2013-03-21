@@ -36,9 +36,9 @@ message.cpp:	checkout
 message.h:	checkout
 crbUnit.cpp:	checkout
 crbUnit.h:	checkout
+README:	checkout
 
-
-README:	
+checkout:
 	@rm Makefile
 	@clear
 	@echo fetching source code.  Just a moment please..
