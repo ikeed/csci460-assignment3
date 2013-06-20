@@ -1,0 +1,57 @@
+crbUnit
+=======
+
+C++ Unit testing library.
+Author: Craig Burnett
+
+I wasn't happy with the existing unit-testing libs for C++.  Most of them wouldn't allow me
+to simulate out-of-memory conditions to test that my exception handling code.  
+Some didn't deal very well with threads.  So I wrote one.
+
+How it is used:
+
+#include "crbUnit.h"
+
+bool DoSomeTest1(void *args);
+bool DoSomeTest2(void *args);
+
+int main() {
+  struct testStats ts = setup();
+	MyObject *obj = new MyObject;
+	test("Testing the insert method", ts, DoSomeTest1, (void *) obj);
+
+
+	//You can pack whatever arguments you want into an array.
+	void **arr[3];
+	arr[0] = (void*)obj;
+	arr[1] = (void*) new int(5);
+	arr[2] = (void *) new String("Test me");
+	//and then pass all of that into test. The DoSomeTest2 function needs
+	// to know how to unpack and use those arguments to perform the test.
+	test("Testing the remove method", ts, DoSomeTest2, (void *) arr);
+	summary(ts);
+
+	return 0;
+}
+
+bool DoSomeTest1(void *args) {
+	//Your test function needs to know how to interpret whatever arguments you passed.
+	MyObject *p = (MyObject *) args;
+
+	// Take some action
+	p->SomeFunction();
+
+	// Test the result
+	if (p->status != ExpectedStatus) {
+		throw(formatError("Testing the insert function", "Object ended up in wrong state", ExpectedStatus,  p->status));
+	}
+	
+return true;
+
+}
+
+
+The test(..) function calls fork() and your test code is run in the child thread. If the child process takes a long time
+to complete (hung), the parent process will kill the child and mark the test as failed.  If the child process stops running
+on its own, the parent will conduct a post-mortem to see if it exited successfully, found an error, crashed or was killed.
+All of this is reported in the summary at the end of all tests.
